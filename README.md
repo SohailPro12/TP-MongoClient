@@ -1,80 +1,80 @@
 # TP MongoClient
 
-A Node.js REST API built with Express and MongoDB for managing and querying product data.
+Une API REST Node.js construite avec Express et MongoDB pour gérer et interroger des données de produits.
 
 ## 📋 Description
 
-This project demonstrates MongoDB integration with Node.js, featuring product management with advanced querying capabilities, pagination, filtering, and aggregation pipelines.
+Ce projet démontre l'intégration de MongoDB avec Node.js, avec une gestion de produits dotée de capacités de requêtes avancées, de pagination, de filtrage et de pipelines d'agrégation.
 
-## 🚀 Features
+## 🚀 Fonctionnalités
 
-- **Product Listing**: Get products with pagination, filtering, and sorting
-- **Search**: Full-text search across product titles and descriptions
-- **Category Filtering**: Filter products by category
-- **Statistics**: Aggregated statistics by category, top-rated products, and brand analytics
-- **Data Seeding**: Populate database with sample data from DummyJSON API
+- **Liste de produits** : Obtenir des produits avec pagination, filtrage et tri
+- **Recherche** : Recherche en texte intégral dans les titres et descriptions de produits
+- **Filtrage par catégorie** : Filtrer les produits par catégorie
+- **Statistiques** : Statistiques agrégées par catégorie, produits les mieux notés et analyses par marque
+- **Initialisation des données** : Remplir la base de données avec des données d'exemple depuis l'API DummyJSON
 
-## 📦 Prerequisites
+## 📦 Prérequis
 
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
-- npm or yarn
+- Node.js (v14 ou supérieur)
+- MongoDB (instance locale ou cloud)
+- npm ou yarn
 
 ## 🛠️ Installation
 
-1. Clone the repository and navigate to the project directory:
+1. Clonez le dépôt et naviguez vers le répertoire du projet :
 
    ```bash
    cd "TP MongoClient"
    ```
 
-2. Install dependencies:
+2. Installez les dépendances :
 
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the root directory with the following variables:
+3. Créez un fichier `.env` à la racine du projet avec les variables suivantes :
 
    ```env
    MONGO_URI=mongodb://localhost:27017
-   DB_NAME=your_database_name
+   DB_NAME=nom_de_votre_base_de_donnees
    ```
 
-4. Seed the database with sample products:
+4. Initialisez la base de données avec des produits d'exemple :
 
    ```bash
    npm run seed
    ```
 
-5. Start the development server:
+5. Démarrez le serveur de développement :
    ```bash
    npm start
    ```
 
-The server will run on `http://localhost:3000`
+Le serveur s'exécutera sur `http://localhost:3000`
 
-## 📡 API Endpoints
+## 📡 Points d'API
 
 ### GET /api/products
 
-Get a paginated list of products with optional filtering and sorting.
+Obtenir une liste paginée de produits avec filtrage et tri optionnels.
 
-**Query Parameters:**
+**Paramètres de requête :**
 
-- `page` (number, default: 1): Page number
-- `limit` (number, default: 10): Items per page
-- `category` (string): Filter by category
-- `search` (string): Search in title and description
-- `sort` (string): Sort field (prefix with `-` for descending, e.g., `-price`)
+- `page` (nombre, par défaut : 1) : Numéro de page
+- `limit` (nombre, par défaut : 10) : Nombre d'éléments par page
+- `category` (chaîne) : Filtrer par catégorie
+- `search` (chaîne) : Rechercher dans le titre et la description
+- `sort` (chaîne) : Champ de tri (préfixer avec `-` pour décroissant, ex : `-price`)
 
-**Example:**
+**Exemple :**
 
 ```bash
 GET /api/products?page=1&limit=10&category=smartphones&search=apple&sort=-price
 ```
 
-**Response:**
+**Réponse :**
 
 ```json
 {
@@ -87,9 +87,9 @@ GET /api/products?page=1&limit=10&category=smartphones&search=apple&sort=-price
 
 ### GET /api/products/stats
 
-Get aggregated statistics about products.
+Obtenir des statistiques agrégées sur les produits.
 
-**Response:**
+**Réponse :**
 
 ```json
 {
@@ -119,22 +119,22 @@ Get aggregated statistics about products.
 }
 ```
 
-## 🗂️ Project Structure
+## 🗂️ Structure du projet
 
 ```
 TP MongoClient/
 ├── routes/
-│   └── products.js      # Product routes and controllers
-├── server.js            # Express server configuration
-├── seedProducts.js      # Database seeding script
-├── package.json         # Project dependencies
-├── .env                 # Environment variables (not tracked)
-└── README.md           # This file
+│   └── products.js      # Routes et contrôleurs de produits
+├── server.js            # Configuration du serveur Express
+├── seedProducts.js      # Script d'initialisation de la base de données
+├── package.json         # Dépendances du projet
+├── .env                 # Variables d'environnement (non suivies)
+└── README.md           # Ce fichier
 ```
 
-## 🛢️ Database Schema
+## 🛢️ Schéma de la base de données
 
-The products collection follows this schema:
+La collection de produits suit ce schéma :
 
 ```javascript
 {
@@ -145,29 +145,29 @@ The products collection follows this schema:
   brand: String,
   stock: Number,
   rating: Number,
-  // ... other fields from DummyJSON API
+  // ... autres champs de l'API DummyJSON
 }
 ```
 
-## 📜 Available Scripts
+## 📜 Scripts disponibles
 
-- `npm start` - Start the server with nodemon (auto-restart on changes)
-- `npm run seed` - Populate the database with sample products from DummyJSON
+- `npm start` - Démarrer le serveur avec nodemon (redémarrage automatique lors de changements)
+- `npm run seed` - Remplir la base de données avec des produits d'exemple depuis DummyJSON
 
-## 🔧 Technologies Used
+## 🔧 Technologies utilisées
 
-- **Express.js** - Web framework
-- **MongoDB** - NoSQL database
-- **MongoDB Native Driver** - Database client
-- **dotenv** - Environment variable management
-- **nodemon** - Development auto-restart
+- **Express.js** - Framework web
+- **MongoDB** - Base de données NoSQL
+- **MongoDB Native Driver** - Client de base de données
+- **dotenv** - Gestion des variables d'environnement
+- **nodemon** - Redémarrage automatique en développement
 
 ## 📝 Notes
 
-- The seed script fetches products from [DummyJSON](https://dummyjson.com/products)
-- All existing products are deleted before seeding
-- The API uses MongoDB aggregation pipelines for statistics
+- Le script d'initialisation récupère les produits depuis [DummyJSON](https://dummyjson.com/products)
+- Tous les produits existants sont supprimés avant l'initialisation
+- L'API utilise des pipelines d'agrégation MongoDB pour les statistiques
 
-## 👨‍💻 Author
+## 👨‍💻 Auteur
 
 Sohail Charef - GLSID
