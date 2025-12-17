@@ -170,8 +170,4 @@ The products collection follows this schema:
 
 ## 👨‍💻 Author
 
-Created for XML/Database coursework at ENSET - S3
-
-## 📄 License
-
-ISC
+Sohail Charef - GLSID
